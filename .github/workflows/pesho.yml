@@ -10,5 +10,3 @@ jobs:
     steps:
       - name: whoami
         run: whoami
-      - name: pwd
-        run: pwd
