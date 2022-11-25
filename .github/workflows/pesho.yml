@@ -1,0 +1,14 @@
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+name: Pesho
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: whoami
+        run: whoami
+        - name: pwd
+        run: pwd
