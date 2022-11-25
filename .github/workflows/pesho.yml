@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ master, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 name: Pesho
 jobs:
   build:
