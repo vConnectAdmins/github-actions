@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: w
-        run: w
+      - name: pwd
+        run: pwd
       - name: df
         run: df
       - name: ls
