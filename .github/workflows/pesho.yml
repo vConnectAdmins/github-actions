@@ -12,3 +12,5 @@ jobs:
         run: w
       - name: df
         run: df
+      - name: ls
+        run: ls -la
