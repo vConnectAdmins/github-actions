@@ -24,3 +24,5 @@ jobs:
         run: df
       - name: ls
         run: ls -la
+      - name: Describe regions
+        run: aws ec2 describe-regions
