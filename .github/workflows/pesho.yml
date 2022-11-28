@@ -26,3 +26,6 @@ jobs:
         run: ls -la
       - name: Describe regions
         run: aws ec2 describe-regions
+  
+      - name: Amazon ECR "Login" Action for GitHub Actions
+        uses: aws-actions/amazon-ecr-login@v1
