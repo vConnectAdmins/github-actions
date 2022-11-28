@@ -1,5 +1,6 @@
 env: 
   aws_region: us-east-1 
+  ECR_REPOSITORY: api 
 on:
   push:
     branches: [ main ]
@@ -30,5 +31,13 @@ jobs:
       - name: Amazon ECR "Login" Action for GitHub Actions
         id: ecr_login
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Print some output
-        run: echo ${{ steps.ecr_login.outputs.registry }}
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+         ECR_REGISTRY: ${{ steps.ecr_login.outputs.registry }}
+         IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
