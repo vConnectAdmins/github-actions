@@ -23,7 +23,8 @@ jobs:
       - name: Amazon ECR "Login" Action for GitHub Actions
         id: ecr_login
         uses: aws-actions/amazon-ecr-login@v1
-        registry-type: public
+        with:
+          registry-type: public
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
