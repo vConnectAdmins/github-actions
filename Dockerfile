@@ -1,2 +1,2 @@
 FROM nginx:latest
-COPY pesho.txt /var/www/html/
+COPY index.html /var/www/html/
