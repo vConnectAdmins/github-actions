@@ -1,6 +1,6 @@
 env: 
   aws_region: us-east-1 
-  ECR_REPOSITORY: api 
+  ECR_REPOSITORY: k9m8e9q2/api 
 on:
   push:
     branches: [ main ]
