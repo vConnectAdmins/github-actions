@@ -19,23 +19,16 @@ jobs:
           aws-access-key-id:  ${{ secrets.aws_access_key_id }}
           aws-secret-access-key:  ${{ secrets.aws_secret_access_key }}
           aws-region: ${{ env.aws_region }}
-      - name: pwd
-        run: pwd
-      - name: df
-        run: df
-      - name: ls
-        run: ls -la
-      - name: Describe regions
-        run: aws ec2 describe-regions
   
       - name: Amazon ECR "Login" Action for GitHub Actions
         id: ecr_login
         uses: aws-actions/amazon-ecr-login@v1
+        registry-type: public
 
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
-         ECR_REGISTRY: public.ecr.aws/k9m8e9q2
+         ECR_REGISTRY: ${{ steps.ecr_login.outputs.registry }}
          IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
